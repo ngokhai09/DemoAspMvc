@@ -1,0 +1,72 @@
+﻿<div class="absolute z-10 w-full h-0 top-[calc(50%-1.125rem)]">
+    <div class="flex justify-between container mx-auto">
+        <i class="las la-angle-left text-2xl left-0 transition-all duration-500 ease-in-out relative opacity-0 group-hover:opacity-100 bg-gray-300 hover:bg-blue-600 hover:text-white p-2 rounded-full cursor-pointer"></i><i class="las la-angle-right text-2xl right-0 transition-all duration-500 ease-in-out relative opacity-0 group-hover:opacity-100 bg-gray-300 hover:bg-blue-600 hover:text-white p-2 rounded-full cursor-pointer"></i>
+    </div>
+</div>
+<div class="backdrop-invert-0 max-w-screen-sm md:max-w-screen-md lg:max-w-[900px] absolute z-10 top-8 mx-auto left-0 right-0">
+    <ul class="flex h-8 w-full space-x-2">
+        <li class="flex items-center font-medium rounded-t text-center px-8 cursor-pointer bg-gray-900/80 text-white">
+            <span>Nhà đất bán</span>
+        </li>
+        <li class="flex items-center hover:bg-gray-900/80 hover:text-white text-gray-700 font-medium rounded-t text-center px-8 cursor-pointer">
+            <span>Nhà đất cho thuê</span>
+        </li>
+    </ul>
+    <div class="p-4 bg-gray-900/80 rounded-b rounded-tr shadow-xl">
+        <div class="flex h-10">
+            <button nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger flex items-center justify-between px-3 w-48 bg-white border-r border-gray-200 rounded-l-lg">
+                <img src="https://anphuocland.com/assets/icons/home.svg" alt="" class="h-4 w-4 ng-star-inserted"><span class="grow text-left pl-3">Loại nhà đất</span><i class="las text-xs h-6 w-6 p-1.5 la-angle-down"></i>
+            </button>
+            <div class="relative grow">
+                <input id="search" class="w-full !h-full p-3 text-sm text-gray-900 rounded-tr-lg rounded-br-lg focus:outline-none ng-pristine ng-valid ng-touched" placeholder="Tìm kiếm th">
+                <button class="h-2/3 text-white absolute top-1/2 -translate-y-1/2 px-3 right-2 bg-red-500 font-medium rounded text-sm hover:bg-red-400 flex items-center space-x-2">
+                    <img src="https://anphuocland.com/assets/icons/home/icon/search-white.svg" alt="" class="h-1/2"><span>Tìm kiếm</span>
+                </button>
+            </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center items-end gap-4 mt-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+                <button nz-tooltip="" nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger rounded w-full h-8 text-white border border-white flex justify-between items-center px-3">
+                    <span class="truncate mr-3">Toàn quốc</span>
+                    <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                        <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                            <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger rounded w-full h-8 text-white border border-white flex justify-between items-center px-3">
+                    <span>Mức giá</span>
+                    <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                        <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                            <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger rounded w-full h-8 text-white border border-white flex justify-between items-center px-3">
+                    <span>Diện tích</span>
+                    <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                        <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                            <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button nz-dropdown="" nztrigger="click" nzplacement="bottomRight" class="ant-dropdown-trigger rounded w-full h-8 text-white border border-white flex justify-between items-center px-3">
+                    <span>Lọc thêm</span>
+                    <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                        <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                            <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div><img src="https://anphuocland.com/assets/icons/component/sync.svg" alt="" class="h-7 w-7 bg-white rounded-full cursor-pointer hover:opacity-80 active:bg-blue-200">
+        </div>
+    </div>
+</div>
+<swiper-container fmswiper="" init="false" class="w-full swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true" slot="container-end"></span>
+    <swiper-slide role="group" aria-label="2 / 3" class="swiper-slide-next" data-swiper-slide-index="1" style="width: 2114px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+        <div>
+            <img src="https://s3.cloud.cmctelecom.vn/tinhte2/2020/01/4875839_united_arab_emirates_skyscrapers_dubai_megapolis-wallpaper-1920x1080.jpg" class="lazy w-full h-96 lg:h-[450px] object-cover top-0 left-0 -z-10">
+        </div>
+    </swiper-slide>
+</swiper-container>

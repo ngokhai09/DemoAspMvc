@@ -1,0 +1,304 @@
+﻿@model PaginatedList<DemoMVC.Models.Property>
+@{
+    ViewData["Title"] = "SalePropertyNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var prevDisabled = !Model.HasPreviousPage ? "pointer-events-none" : "";
+    var nextDisabled = !Model.HasNextPage ? "pointer-events-none" : "";
+
+}
+
+
+<div>
+    <section class="sticky top-20 inset-x-0 z-40 bg-white border-t border-gray-200 sm:px-5 shadow-md">
+        <form id="myForm" asp-action="SalePropertyNews" method="get" class="flex flex-wrap h-full w-full sm:w-5/6 mx-auto gap-x-5 gap-y-2 items-center justify-between py-2 flex-col sm:flex-row">
+            <input asp-route-currentFilter="@ViewData["CurrentFilter"]" hidden />
+            <div class="w-40 mx-auto sm:mx-0">
+                <a>
+                    <input type="radio" id="sale" name="code" class="hidden peer" checked>
+                    <label for="sale" class="inline-flex items-center justify-between w-auto p-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <div class="w-full">Bán</div>
+                    </label>
+                </a>
+                <a asp-action="RentPropertyNews">
+                    <label for="rent" class="inline-flex items-center justify-between w-auto p-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        Cho thuê
+                    </label>
+                </a>
+            </div>
+            <div class="relative w-fit mx-auto sm:mx-0">
+                <input type="text" placeholder="Nhập để tìm kiếm ..." name="SearchString" value="@ViewData["CurrentFilter"]" class="w-64 h-8 rounded-md text-gray-700 bg-white border border-solid border-gray-200 pr-9 pl-2 outline-blue-400 ng-pristine ng-valid ng-touched">
+                <i class="text-lg las la-search absolute top-1/2 -translate-y-1/2 right-2 z-[1]"></i>
+            </div>
+            <div class="flex flex-1 justify-between items-center h-full border-l border-r border-gray-100 divide-x divide-gray-100 max-w-full sm:max-w-none">
+                <div nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger h-full w-1/3 hover:bg-gray-100 cursor-pointer ng-star-inserted">
+                    <div class="px-5">
+                        <div class="h-7 flex items-center whitespace-nowrap">
+                            <label class="text-gray-700 text-xs mr-2 cursor-pointer">Loại nhà đất</label>
+                            <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                                <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                                    <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                                </svg>
+                            </span>
+                        </div><select name="PropertyType" class="font-medium truncate block">
+                            <option value="">Chọn</option>
+                            <option value="ec557bea-4abd-45ef-cdec-08dba9cd315e" id="ec557bea-4abd-45ef-cdec-08dba9cd315e">Đất</option>
+                            <option value="2e064e8c-ef8c-47bb-cded-08dba9cd315e" id="2e064e8c-ef8c-47bb-cded-08dba9cd315e">Nhà ở</option>
+                            <option value="324f632e-f073-49d1-cdf0-08dba9cd315e" id="324f632e-f073-49d1-cdf0-08dba9cd315e">Căn Hộ, chung cư</option>
+                            <option value="be7c14cb-4d97-4f3b-cdf1-08dba9cd315e" id="be7c14cb-4d97-4f3b-cdf1-08dba9cd315e">Kho, xưởng</option>
+                        </select>
+                    </div>
+                </div>
+                <div nz-tooltip="" nz-dropdown="" nztrigger="click" class="ant-dropdown-trigger h-full w-1/3 hover:bg-gray-100 cursor-pointer">
+                    <div class="px-5">
+                        <div class="h-7 flex items-center whitespace-nowrap">
+                            <label class="text-gray-700 text-xs mr-2 cursor-pointer">Khu vực</label><span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                                <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                                    <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                                </svg>
+                            </span>
+                        </div><select name="PropertyAddress" class="truncate font-medium block">
+                            <option value="">Toàn Quốc</option>
+                            <option id="100000" value="100000">Hà Nội</option>
+                            <option id="700000" value="700000">Hồ Chí Minh</option>
+                            <option id="550000" value="550000">Đà Nẵng</option>
+                        </select>
+                    </div>
+                </div><div nz-dropdown="" nztrigger="click" nzplacement="bottomRight" class="ant-dropdown-trigger h-full w-1/3 hover:bg-gray-100 cursor-pointer">
+                    <div class="px-5">
+                        <div class="h-7 flex items-center whitespace-nowrap">
+                            <label class="text-gray-700 text-xs mr-2 cursor-pointer">Lọc thêm</label>
+                            <span nz-icon="" nztype="down" class="anticon !text-xs text-gray-400 anticon-down">
+                                <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="down" aria-hidden="true">
+                                    <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <select class="font-medium truncate block">
+                            <option>Nguồn</option>
+                            <option>Nguồn chính chủ</option>
+                            <option>Nguồn liên kết</option>
+                            <option>Nguồn sơ cấp</option>
+                            <option>Nguồn thứ cấp</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-x-2 mx-auto">
+                <button class="flex whitespace-nowrap cursor-pointer hover:bg-red-400 items-center rounded-md p-2 bg-red-500">
+                    <img src="https://anphuocland.com/assets/icons/home/icon/search-white.svg" alt="" class="h-4">
+                    <span class="text-white font-medium ml-2">Tìm kiếm</span>
+                </button>
+                <button name="Reset" value="reset" class="flex whitespace-nowrap cursor-pointer hover:bg-gray-100 items-center rounded-md p-2">
+                    <img src="https://anphuocland.com/assets/icons/component/sync.svg" alt="" class="h-4"><span class="text-gray-700 font-medium ml-2">Đặt lại</span>
+                </button>
+
+            </div>
+        </form>
+    </section>
+    <section class="max-w-screen-lg mx-auto p-4 sm:p-8 h-auto">
+        <div class="grid grid-cols-3 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div class="col-span-3 bg-white rounded-md w-full">
+                <div>
+                    <div class="mb-3">
+                        <a class="text-sm text-gray-600 mb-5" title="Nhà đất bán tại Việt Nam"> Bán </a>
+                        <span class="text-sm text-gray-600"> / </span>
+                        <a class="text-sm font-medium text-black mb-3" title="Nhà đất bán trên toàn quốc">Nhà đất bán trên toàn quốc</a>
+                    </div>
+                    <h1 class="text-2xl font-semibold mb-5">Nhà đất bán trên toàn quốc</h1><p class="text-sm font-medium text-black mb-3">Hiện có @Model.Total bất động sản</p>
+                </div>@foreach (var item in Model)
+                {
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <div class="border border-gray-200 shadow w-full mb-4 rounded hover:shadow-lg ng-star-inserted">
+                            <div class="cursor-pointer">
+
+                                <div>
+                                    <div class="relative">
+                                        <div class="flex flex-row items-center gap-1 absolute bottom-2 right-2 ng-star-inserted">
+                                            <img src="https://anphuocland.com/assets/icons/home/whiteimage.svg" alt="" class="w-[18px]"><span class="text-white font-semibold ng-star-inserted">1 </span>
+                                        </div>
+                                        <div class="w-full ng-star-inserted">
+                                            <img alt="" class="h-[284px] w-full max-w-full object-cover rounded-t" src="@item.ThumbnailUrl">
+                                        </div>
+                                    </div><div class="flex flex-col p-4 gap-1 sm:gap-2">
+                                        <div class="flex gap-x-2">
+                                            <p class="text-sm font-sans font-semibold text-gray-900 line-clamp-2 flex-1 relative" title="@item.Title">
+                                                @item.Title
+                                            </p><div class="hidden sm:block"><p class="py-1 px-2 ng-star-inserted" style="background-color: rgb(16, 158, 68); color: rgb(255, 255, 255);"> Đang bán </p></div>
+                                        </div>
+                                        <div class="flex gap-x-2 flex-wrap sm:flex-nowrap flex-col sm:flex-row items-start sm:items-stretch">
+                                            <div class="flex-1">
+                                                <span class="ng-star-inserted">
+                                                    <span class="text-red-600 text-base font-medium">@((double)item.TotalPrice / 1e9) tỷ</span><span class="opacity-70">
+                                                        ‧
+                                                    </span><span class="text-red-600 text-base font-medium">@item.TotalArea m²</span><span class="opacity-70">
+                                                        ‧
+                                                    </span><span class="text-sm"> @(String.Format("{0:0}", (double)(item.TotalPrice / item.TotalArea) / 1e6)) /m²</span><span class="opacity-70"> ‧ </span>
+                                                </span>
+                                                <span class="text-sm sm:truncate block sm:inline mt-1 sm:mt-0 ng-star-inserted">
+                                                    <i class="las la-map-marker text-xl"></i> @item.CommuneName, @item.DistrictName, @item.ProvinceName
+                                                </span>
+                                            </div>
+                                            <div class="hidden sm:flex flex-row justify-end items-center text-xs mt-0.5 sm:mt-0 text-amber-700"> #Đất </div>
+                                        </div><div class="mt-1 sm:mt-2 line-clamp-2">
+                                            <p class="text-sm" title="@item.Description">
+                                                @item.Description
+                                            </p>
+                                        </div>
+                                        <div class="flex sm:hidden w-full">
+                                            <div class="block sm:flex flex-row justify-end items-center text-xs mt-0.5 sm:mt-0 text-amber-700"> #Đất </div>
+                                            <div class="ml-auto"><p class="py-1 px-2 ng-star-inserted" style="background-color: rgb(16, 158, 68); color: rgb(255, 255, 255);"> Đang bán </p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </a>
+                }
+                <g-pagination class="ng-star-inserted">
+                    <div class="flex items-center justify-between mt-3 select-none sm:flex-row flex-col ng-star-inserted">
+                        <label>
+
+                            </nz-select><span class="text-black w-40 flex items-center ng-star-inserted">
+                                @{
+                                    int count = 20;
+                                }
+                                Hiển thị @if (Model.ToList().Count < 20)
+                                {
+                                    count = Model.ToList().Count;
+                                }
+                                @count
+                                / @(Model.Total) Kết quả
+                            </span>
+                        </label>
+                        <div class="flex justify-center border border-gray-200 h-7 rounded-md bg-white ml-1">
+                            <div class="flex flex-wrap justify-center items-center p-0.5">
+                                <a asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-propertyFilter="@ViewData["PropertyFilter"]" asp-route-addressFilter="@ViewData["AddressFilter"]" asp-route-pageNumber="@(Model.PageIndex - 1)" class="@prevDisabled text-center duration-300 transition-all py-0.5 px-1.5 text-xs font-medium text-blue-700 hover:text-blue-500 ng-star-inserted" aria-label="page undefined">
+                                    <i class="las la-angle-left text-xs ng-star-inserted"></i>
+                                </a>
+                                @for (int i = 1; i <= Model.TotalPage; i++)
+                                {
+                                    <a asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-propertyFilter="@ViewData["PropertyFilter"]" asp-route-addressFilter="@ViewData["AddressFilter"]" asp-route-pageNumber="@i" active class="@(Model.PageIndex == i ? "active" : "") text-center duration-300 transition-all py-0.5 px-1.5 text-xs font-medium text-black [&.active]:bg-blue-600 [&.active]:text-white rounded-full" aria-label="page @i"><span class="ng-star-inserted">@i</span></a>
+                                }
+                                <a asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-propertyFilter="@ViewData["PropertyFilter"]" asp-route-addressFilter="@ViewData["AddressFilter"]" asp-route-pageNumber="@(Model.PageIndex + 1)" class="@nextDisabled text-center duration-300 transition-all py-0.5 px-1.5 text-xs font-medium text-blue-700 hover:text-blue-500 ng-star-inserted" aria-label="page undefined">
+                                    <i class="las la-angle-right text-xs ng-star-inserted"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </g-pagination>
+            </div><div class="col-span-1">
+                <div class="bg-white rounded-md border border-gray-200 shadow w-full mb-4 hidden lg:block">
+                    <div class="mx-1">
+                        <div class="my-5">
+                            <div class="flex justify-between items-center mb-3 px-4">
+                                <h1 class="text-sm font-medium text-black">Lọc theo khoảng giá</h1><button nz-button="" nz-tooltip="" nztooltiptitle="Hủy lọc">
+                                    <img src="https://anphuocland.com/assets/icons/recycle.svg" alt="" class="w-4">
+                                </button>
+                            </div><g-price _nghost-ter-c70="">
+                                <main _ngcontent-ter-c70="" class="bg-white p-2">
+                                    <section _ngcontent-ter-c70="">
+                                        <p>
+                                            <span type="text" class="text-sm font-medium text-black"
+                                                  id="amount"
+                                                  readonly></span>
+                                        </p>
+                                        <form asp-action="SalePropertyNews" method="get">
+                                            <input name="CurrentFilter" value="@ViewData["CurrentFilter"]" hidden />
+                                            <input name="AreaFilter" value="@ViewData["AreaFilter"]" hidden />
+
+                                            <div id="price-range"></div>
+                                            <input id="price" value="" name="PriceFilter" hidden />
+                                            <button class="flex mt-3 whitespace-nowrap cursor-pointer h-auto w-auto hover:bg-red-400 items-center rounded-md p-2 bg-red-500">
+                                                <span class="text-white text-sm ml-1">Áp dụng</span>
+                                            </button>
+                                        </form>
+                                    </section>
+                                </main>
+                            </g-price>
+                        </div>
+                    </div>
+                </div><div class="bg-white rounded-md border border-gray-200 shadow w-full mb-4 hidden lg:block">
+                    <div class="mx-1">
+                        <div class="my-5">
+                            <div class="flex justify-between items-center mb-3 px-4">
+                                <h1 class="text-sm font-medium text-black">Lọc theo diện tích</h1><button nz-button="" nz-tooltip="" nztooltiptitle="Hủy lọc">
+                                    <img src="https://anphuocland.com/assets/icons/recycle.svg" alt="" class="w-4">
+                                </button>
+                            </div><g-acreage _nghost-ter-c71="">
+                                <main _ngcontent-ter-c71="" class="bg-white p-2">
+                                    <section _ngcontent-ter-c71="">
+                                        <p>
+                                            <span type="text" class="text-sm font-medium text-black"
+                                                  id="area-display"
+                                                  readonly></span>
+                                        </p>
+
+                                        <form asp-action="SalePropertyNews" method="get">
+                                            <input name="CurrentFilter" value="@ViewData["CurrentFilter"]" hidden />
+                                            <input name="PriceFilter" value="@ViewData["PriceFilter"]" hidden />
+
+                                            <div id="area-range"></div>
+                                            <input id="area" value="" name="AreaFilter" hidden />
+                                            <button class="flex mt-3 whitespace-nowrap cursor-pointer h-auto w-auto hover:bg-red-400 items-center rounded-md p-2 bg-red-500">
+                                                <span class="text-white text-sm ml-1">Áp dụng</span>
+                                            </button>
+                                        </form>
+                                    </section>
+                                </main>
+                            </g-acreage>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<script>
+    $(function () {
+        let price = "@ViewData["PriceFilter"]".split("-");
+        $("#price-range").slider({
+            range: true,
+            min: 0,
+            max: 30,
+            step: 0.1,
+            values: [+price[0], +price[1]],
+            slide: function (event, ui) {
+                $("#price").val(ui.values[0] + "-" + ui.values[1]);
+                $("#amount").html(ui.values[0] + " tỷ VND - " + ui.values[1] + " tỷ VND");
+            },
+        });
+        $("#amount").html(
+            $("#price-range").slider("values", 0) +
+            " tỷ VND - " +
+            $("#price-range").slider("values", 1) +
+            " tỷ VND"
+        );
+
+
+        let area = "@ViewData["AreaFilter"]".split("-");
+        $("#area-range").slider({
+            range: true,
+            min: 0,
+            max: 1000,
+            step: 10,
+            values: [+area[0], +area[1]],
+            slide: function (event, ui) {
+                $("#area").val(ui.values[0] + "-" + ui.values[1]);
+                $("#area-display").html(ui.values[0] + " m2 - " + ui.values[1] + " m2");
+            },
+        });
+        $("#area-display").html(
+            $("#area-range").slider("values", 0) +
+            " m2 - " +
+            $("#area-range").slider("values", 1) +
+            " m2"
+        );
+        $('#@ViewBag.AddressFilter').attr("selected", "");
+        $('#@ViewData["PropertyFilter"]').attr("selected", "");
+
+    });
+</script>

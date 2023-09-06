@@ -1,0 +1,50 @@
+@model IEnumerable<DemoMVC.Models.Property>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="relative group">
+    @Html.Partial("_Filler")
+</div>
+<div class="max-w-screen-xl mx-auto pt-10 pb-7 px-3 sm:px-10 rounded-md">
+    <div class="flex justify-between items-center mb-5">
+        <h3
+            class="text-lg sm:text-2xl font-semibold text-black">
+            Bất động sản dành cho bạn
+        </h3>
+        <div class="hidden xl:flex items-center">
+            <a class="text-black hover:text-slate-400"
+               asp-action="SalePropertyNews">
+                Tin nhà đất bán mới nhất
+            </a>
+            <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
+            <a class="text-black hover:text-slate-400" asp-action="RentPropertyNews">
+                Tin nhà đất cho thuê mới
+                nhất
+            </a>
+            <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
+            <a class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200" asp-route-sortOrder="@ViewData["DateSortParam"]" asp-action="Index">
+                <span>Mới nhất</span>
+                <i
+                    class="las text-lg la-sort">
+                </i>
+            </a>
+            <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
+            <a class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200" asp-route-sortOrder="@ViewData["PriceSortParam"]" asp-action="Index">
+                <span>Giá</span>
+                <i
+                    class="las text-lg la-sort">
+                </i>
+            </a>
+        </div>
+    </div>
+    <div class="ant-spin-container ng-star-inserted">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden relative">
+            @foreach (var item in Model)
+            {
+                Html.RenderPartial("HouseItems", item);
+            }
+        </div>
+    </div>
+</div>

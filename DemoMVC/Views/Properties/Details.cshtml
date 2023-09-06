@@ -1,0 +1,169 @@
+@model DemoMVC.Models.Property
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="max-w-[1100px] mx-auto mt-10 px-10 pt-5 rounded-md h-auto">
+    <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-8 ng-star-inserted">
+        <div class="col-span-3 bg-white rounded-md w-full">
+            <div class="w-full mb-4">
+                <div>
+                    <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-0.5">
+                        <div class="max-h-[600px] max-w-[400px] sm:max-w-[868px] lg:max-w-full col-span-3 cursor-pointer">
+
+                            <section class="ng-star-inserted">
+                                <swiper-container thumbs-swiper=".mySwiper2" space-between="10" navigation="true" class="mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff;">
+                                    <swiper-slide class="ng-star-inserted swiper-slide-active" style="width: 757px; margin-right: 10px;">
+                                        <div class="flex w-full h-[476px] justify-center items-center flex-col">
+                                            <div class="w-full h-full bg-cover bg-center" style="background-image: url('@Model.ThumbnailUrl');">
+                                                <div class="w-full h-full flex justify-center items-center backdrop-blur-lg">
+                                                    <a class="glightbox" href="https://anphuocland.com:7100/files/public/property/2023/8/579aws9/579aws9_virtual_20230829t114424_638289063240926535.jpg">
+                                                        <img class="max-h-[476px] flex h-[476px] w-auto justify-center items-center object-cover" src="@Model.ThumbnailUrl">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </swiper-slide><span class="swiper-notification" aria-live="assertive" aria-atomic="true" slot="container-end"></span>
+                                </swiper-container>
+                                <swiper-container space-between="10" slides-per-view="7" free-mode="true" watch-slides-progress="true" class="mySwiper2 mt-2.5 swiper-initialized swiper-horizontal swiper-free-mode swiper-watch-progress swiper-backface-hidden swiper-thumbs">
+                                    <swiper-slide class="ng-star-inserted swiper-slide-thumb-active swiper-slide-visible swiper-slide-active" style="width: 99.5714px; margin-right: 10px;">
+                                        <img class="rounded-md h-[80px] w-full object-cover" src="@Model.ThumbnailUrl">
+                                    </swiper-slide><span class="swiper-notification" aria-live="assertive" aria-atomic="true" slot="container-end"></span>
+                                </swiper-container>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <div class="flex justify-between">
+                            <h5 class="flex line-clamp-1"><span class="text-gray-400 font-normal ng-star-inserted"> Bán / @Model.ProvinceName / @Model.DistrictName / </span> @Model.Title </h5>
+                            @if(User.Identity.Name == Model.CreateByUser.UserName)
+                            {
+                                <div class="flex justify-end gap-2">
+                                    <a class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" asp-action="Edit" asp-route-id="@Model.Id">
+                                        Edit
+                                    </a>
+                                    <a class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" asp-action="Delete" asp-route-id="@Model.Id">
+                                        Delete
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-xl font-semibold text-gray-900">@Model.Title</span>
+                        </div>
+                        <div>
+                            <span class="text-lg text-gray-900 font-normal"> @Model.CommuneName, @Model.DistrictName, @Model.ProvinceName </span>
+                        </div>
+                        <div class="mt-5">
+                            <div class="border-t border-gray-200">
+                                <div class="grid grid-cols-5 my-2">
+                                    <div>
+                                        <span class="text-sm text-gray-500 font-normal">Ngày đăng</span><br><span class="text-sm text-gray-900 font-semibold">27/08/2023</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-sm text-gray-500 font-normal">Loại hình</span><br><span class="text-sm text-gray-900 font-semibold ng-star-inserted">Bán</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-sm text-gray-500 font-normal">Loại bất động sản</span><br><span class="text-sm text-gray-900 font-semibold">@Model.PropertyCodeType.Title</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="justify-end flex"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1 border-t border-b border-gray-200">
+                            <div class="col-span-1">
+                                <div class="mt-2">
+                                    <label class="text-sm text-gray-400 font-normal">Mức giá</label>
+                                </div>
+                                <div class="mt-1">
+                                    <span class="text-sm text-gray-900 font-semibold ng-star-inserted">@Model.TotalPrice VND</span>
+                                </div>
+                                <div class="mt-1 mb-2">
+                                    <span class="text-sm text-gray-400 font-normal ng-star-inserted"> ~33,50 triệu /m²</span>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="mt-2">
+                                    <label class="text-sm text-gray-400 font-normal">Diện tích</label>
+                                </div>
+                                <div class="mt-1">
+                                    <span class="text-sm text-gray-900 font-semibold"> @Model.TotalArea m²</span>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="mt-2">
+                                    <span class="text-sm text-gray-500 font-normal">Mã tin</span><br>
+                                </div>
+                                <div class="mt-1">
+                                    <span class="text-sm text-gray-900 font-semibold">NMD579AWS9</span>
+                                    <button nz-tooltip="" class="ml-1">
+                                        <i class="las la-copy text-red-900"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div></div>
+                            <div class="justify-end flex mt-2">
+                                <g-modal-form class="mx-2">
+                                    <g-modal>
+                                        <nz-modal></nz-modal>
+                                    </g-modal>
+                                </g-modal-form>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <span class="text-lg font-medium text-gray-900">Thông tin mô tả</span>
+                        </div>
+                        <span class="text-sm text-gray-900 font-normal whitespace-pre-line">
+                           @Model.Description
+                        </span>
+                        <div class="mt-5"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="mt-5">
+                    <div class="flex justify-between">
+                        <span class="text-lg font-medium text-black">Bất động sản dành cho bạn</span>
+                        <div class="space-x-2">
+                            <i class="las la-angle-left text-base border right-0 transition-all duration-500 ease-in-out bg-opacity-0 hover:bg-opacity-80 bg-gray-100 p-2 rounded-md cursor-pointer"></i><i class="las la-angle-right text-base border right-0 transition-all duration-500 ease-in-out bg-opacity-0 hover:bg-opacity-80 bg-gray-100 p-2 rounded-md cursor-pointer"></i>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 md:grid-cols-4 gap-4 mt-3">
+                        <swiper-container fmswiper="" class="mySwiper2 mt-1 w-[300px] sm:w-[500px] md:w-[700px] lg:w-[755px] swiper-initialized swiper-horizontal">
+                            <swiper-slide class="border border-gray-200 rounded-md w-full hover:shadow-lg ng-star-inserted" style="width: 238.333px; margin-right: 20px;">
+                                <div class="relative">
+
+                                    <div class="flex flex-row items-center gap-1 absolute bottom-2 right-2 ng-star-inserted">
+                                        <img src="https://anphuocland.com/assets/icons/home/whiteimage.svg" alt="" class="w-[18px]"><span class="text-white font-semibold ng-star-inserted"> 1 </span>
+                                    </div><img class="h-[118px] w-full object-cover rounded-t-sm" src="https://anphuocland.com:7100/files/public/property/2023/8/w6cj4nc/w6cj4nc_virtual_20230830t103830_638289887741880529-s274x150.jpg">
+                                </div>
+                                <div class="flex flex-col p-3 gap-2 cursor-pointer">
+                                    <p class="text-sm font-sans font-semibold text-black line-clamp-2 relative h-10" title="BÁN ĐẤT 30M2 LẠI ĐÀ ĐÔNG HỘI ĐÔNG ANH HÀ NỘI.">BÁN ĐẤT 30M2 LẠI ĐÀ ĐÔNG HỘI ĐÔNG ANH HÀ NỘI.</p>
+                                    <div class="flex flex-row items-center gap-2">
+                                        <span class="text-red-600 text-base truncate font-medium ng-star-inserted">2,10 tỷ</span><span class="text-gray-500 mb-2">.</span><span class="text-red-600 text-base truncate font-medium">30 m²</span>
+                                    </div>
+                                    <div class="truncate flex flex-row items-center gap-1 text-gray-600">
+                                        <img src="https://anphuocland.com/assets/icons/location.svg" alt="" class="h-4"><span class="truncate" title="Đông Hội, Đông Anh, Hà Nội">Đông Hội, Đông Anh, Hà Nội</span>
+                                    </div>
+                                    <div class="flex flex-row justify-between items-center pt-2">
+                                        <p class="text-sm text-gray-400 cursor-pointer">Đăng 19 giờ trước</p>
+                                    </div>
+                                    <div class="flex flex-row justify-between items-center pt-2">
+                                        <div class="text-xs text-amber-700"> #Đất </div>
+                                        <p class="py-1 px-2 whitespace-nowrap ng-star-inserted" style="background-color: rgb(59, 130, 246); color: rgb(255, 255, 255);"> Đang bán </p>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+
+
+                        </swiper-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

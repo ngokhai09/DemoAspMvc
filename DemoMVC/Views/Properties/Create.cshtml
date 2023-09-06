@@ -1,0 +1,145 @@
+@model DemoMVC.ViewModel.PropertyViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class=" py-1 bg-blueGray-50">
+    <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div class="rounded-t bg-white mb-0 px-6 py-6">
+                <div class="text-center flex justify-between">
+                    <h6 class="text-blueGray-700 text-xl font-bold">
+                        Thêm bất động sản
+                    </h6>
+
+                </div>
+            </div>
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-6/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="Title" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Tiêu đề
+                                </label>
+                                <input asp-for="Title" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="ThumbnailUrl" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Đường dẫn ảnh
+                                </label>
+                                <input hidden asp-for="ThumbnailUrl" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                @* <input asp-for="ThumbnailUrl" type="file" /> *@
+                                <span asp-validation-for="ThumbnailUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="TotalArea" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Tổng diện tích
+                                </label>
+                                <input asp-for="TotalArea" type="number" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="TotalArea" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="TotalPrice" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Giá
+                                </label>
+                                <input asp-for="TotalPrice" type="number" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="PropertyCodeType" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Loại bất động sản
+                                </label>
+                                <select asp-for="PropertyCodeType" id="codeType" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <option value="">Chọn</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="CommuneName" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Phường/Xã
+                                </label>
+                                <input asp-for="CommuneName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="CommuneName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="DistrictName" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Quận/Huyện
+                                </label>
+                                <input asp-for="DistrictName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="DistrictName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="ProvinceName" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Tỉnh/Thành Phố
+                                </label>
+                                <input asp-for="ProvinceName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <span asp-validation-for="ProvinceName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-12/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label asp-for="Description" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Description
+                                </label>
+                                <textarea asp-for="Description" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4"> </textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="submit">
+                            Lưu
+                        </button>
+                        <button class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" onclick="location.href='@Url.Action("Index", "Properties")'">
+                            Hủy
+                        </button>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts
+{
+    <script type="text/javascript">  
+        $(document).ready(function() {  
+            $("#codeType").load('/CodeType/GetCodeTypeOptions/');  
+        });  
+    </script>
+}

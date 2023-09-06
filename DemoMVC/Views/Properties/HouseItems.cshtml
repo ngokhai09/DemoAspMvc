@@ -1,0 +1,97 @@
+﻿@model DemoMVC.Models.Property
+<a asp-action="Details" asp-route-id="@Model.Id">
+    <div
+        class="bg-white border-2 border-gray-200 rounded-md hover:shadow-md duration-400 w-full cursor-pointer ">
+        <div class="relative">
+            <div class="flex flex-row items-center gap-1 absolute bottom-2 right-2">
+                <img
+                    src="https://anphuocland.com/assets/icons/home/whiteimage.svg" alt=""
+                    class="w-[18px]"/>
+                <span
+                    class="text-white font-semibold">
+                    1
+                </span>
+            </div>
+            <img class="h-[150px] w-full max-w-full object-cover rounded-t-sm"
+                 src="@Model.ThumbnailUrl"/>
+
+
+        </div>
+        <div class="flex flex-col p-3">
+            <h1
+                class="text-sm font-sans font-semibold text-black line-clamp-2 relative h-10"
+                title=@Model.Title>
+                @Model.Title
+            </h1>
+            <div class="flex flex-row items-center gap-2">
+                <span
+                    class="text-red-600 text-base truncate font-medium ng-star-inserted">
+                    @Model.TotalPrice
+                </span>
+                <span
+                    class="text-gray-500 mb-2">
+                    .
+                </span>
+                <span
+                    class="text-red-600 text-base truncate font-medium">
+                    @Model.TotalArea m²
+                </span>
+            </div>
+            <div class="truncate flex flex-row items-center gap-1 text-gray-600">
+                <img
+                    src="https://anphuocland.com/assets/icons/location.svg" alt=""
+                    class="h-4"/>
+                <span class="truncate"
+                      title=`@Model.CommuneName, @Model.DistrictName, @Model.ProvinceName`>
+                    @Model.CommuneName, @Model.DistrictName, @Model.ProvinceName
+                </span>
+            </div>
+            <div class="flex flex-row justify-between items-center pt-2">
+                <p
+                    class="text-sm text-gray-400 cursor-pointer" id="time">
+                    @{
+                        int time = (int)(DateTime.Now - Model.CreateOnDate).TotalHours;
+                        
+                    }
+                    Đăng
+                    @if(time < 24)
+                    {
+                        <span> @time Giờ trước</span>
+                    }else if(time < 24*30){
+                        time = (int) time / 24;
+                        <span> @time Ngày trước</span>
+                    }
+                    else{
+
+                        @Model.CreateOnDate.ToString("dd/MM/yyyy")
+
+
+                    }
+                    
+                    
+                </p>
+            </div>
+        </div>
+        <div class="flex justify-between items-end pb-3 px-3">
+            <div
+                class="flex flex-row justify-end items-center text-xs text-amber-700">
+                @Model.PropertyCodeType?.Title
+            </div>
+
+            <p class="py-1 px-2 ng-star-inserted"
+               style="background-color: rgb(59, 130, 246); color: rgb(255, 255, 255)">
+                Đang bán
+            </p>
+
+        </div>
+    </div>
+</a>
+@section Script{
+    <script type="text/javascript">
+        const getTime = (day: any) => {
+            const date = new Date(Date.now() - Date.parse(day));
+            return date.getDate() - 1;
+        }
+        $("#time").val("Đăng " + getTime(@Model.CreateOnDate) + " Ngày trước");
+    </script>
+}

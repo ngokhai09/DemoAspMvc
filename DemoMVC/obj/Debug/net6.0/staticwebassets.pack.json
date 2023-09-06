@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\DemoMVC.bundle.scp.css",
+      "PackagePath": "staticwebassets\\DemoMVC.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.DemoMVC.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.DemoMVC.props",
+      "PackagePath": "build\\DemoMVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.DemoMVC.props",
+      "PackagePath": "buildMultiTargeting\\DemoMVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.DemoMVC.props",
+      "PackagePath": "buildTransitive\\DemoMVC.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

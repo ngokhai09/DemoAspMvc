@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Movie App</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
+          integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
+          crossOrigin="anonymous" referrerPolicy="no-referrer"/>
+    
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" asp-append-version="true">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" asp-append-version="true"></script>
+</head>
+<body>
+<header id="header" class="mb-20">
+</header>
+<div class="relative">
+
+    <main role="main" class="relative b-3">
+        @RenderBody()
+    </main>
+</div>
+
+
+<footer class="">
+    @Html.Partial("_Footer")
+</footer>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+<script type="text/javascript">  
+    $(document).ready(function() {  
+        $("#header").load('/CodeType/GetCodeTypes/');  
+    });  
+</script>
+</html>
