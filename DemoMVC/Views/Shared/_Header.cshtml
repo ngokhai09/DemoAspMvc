@@ -1,75 +1,76 @@
 ﻿@model IEnumerable<DemoMVC.Models.CodeType>
 @using Microsoft.AspNetCore.Identity
 
-    <section id="header" class="fixed top-0 inset-x-0 bg-white shadow-md z-50">
-        <div class="flex justify-between items-center h-20 pl-8 pr-4 text-black">
-            <div class="flex items-center gap-x-10">
+<section id="header" class="fixed top-0 inset-x-0 bg-white shadow-md z-50">
+    <div class="flex justify-between items-center h-20 pl-8 pr-4 text-black">
+        <div class="flex items-center gap-x-10">
             <a href="@Url.Action("Index", "Properties")">
                 <img src="https://anphuocland.com/assets/icons/imgpsh_fullsize_anim.svg" alt="NMD" class="h-14 cursor-pointer" tabindex="0">
-                </a>
-                <ul class="text-sm font-semibold hidden xl:flex gap-x-8 ant-menu ant-menu-root ant-menu-light ant-menu-horizontal">
-                    <li class="cursor-pointer text-black" tabindex="0">
-                        <div class="flex justify-between items-center dropdown">
-                            <div class="group relative">
-                                <span>Nhà đất bán</span>
-                                <div id="slider" class="z-10 h-[0.1rem] w-0 group-hover:w-full absolute left-1/2 -translate-x-1/2 bg-red-600 duration-200 ease-in translate-y-1"></div>
-                            </div><i class="las la-angle-down ml-1.5 "></i>
-                            <div class="hidden absolute bg-[#f9f9f9] min-w-[160px] shadow-md shadow-gray-400 pl-[12px] py-1.5 px-1.5 dropdown-content z-50 mt-[120px]">
-                                @foreach (CodeType item in Model)
-                                {
-                                    <p>Bán @item.Title</p>
-                                }
+            </a>
+            <ul class="text-sm font-semibold hidden xl:flex gap-x-8 ant-menu ant-menu-root ant-menu-light ant-menu-horizontal">
+                <li class="cursor-pointer text-black" tabindex="0">
+                    <div class="flex justify-between items-center dropdown">
+                        <a asp-action="SalePropertyNews" asp-controller="Properties" class="group relative">
+                            <span>Nhà đất bán</span>
+                            <div id="slider" class="z-10 h-[0.1rem] w-0 group-hover:w-full absolute left-1/2 -translate-x-1/2 bg-red-600 duration-200 ease-in translate-y-1"></div>
+                        </a>
+                        <i class="las la-angle-down ml-1.5 "></i>
+                        <div class="hidden absolute bg-[#f9f9f9] min-w-[160px] shadow-md shadow-gray-400 pl-[12px] py-1.5 px-1.5 dropdown-content z-50 mt-[120px]">
+                            @foreach (CodeType item in Model)
+                            {
+                                <p><a asp-action="SalePropertyNews" asp-controller="Properties" asp-route-propertyType="@item.Id">Bán @item.Title</a></p>
+                            }
 
-                            </div>
                         </div>
-                    </li>
-                    <li class="cursor-pointer text-black " tabindex="0">
-                        <div class="flex justify-between items-center dropdown">
-                            <div class="group relative">
-                                <span>Nhà đất bán</span>
-                                <div id="slider" class="z-10 h-[0.1rem] w-0 group-hover:w-full absolute left-1/2 -translate-x-1/2 bg-red-600 duration-200 ease-in translate-y-1"></div>
-                            </div><i class="las la-angle-down ml-1.5 "></i>
-                            <div class="hidden absolute bg-[#f9f9f9] min-w-[160px] shadow-md shadow-gray-400 pl-[12px] py-1.5 px-1.5 dropdown-content z-50 mt-[120px]">
-                                @foreach (CodeType item in Model)
-                                {
-                                    <p>Cho Thuê @item.Title</p>
-                                }
+                    </div>
+                </li>
+                <li class="cursor-pointer text-black " tabindex="0">
+                    <div class="flex justify-between items-center dropdown">
+                        <a asp-action="RentPropertyNews" asp-controller="Properties" class="group relative">
+                            <span>Nhà đất bán</span>
+                            <div id="slider" class="z-10 h-[0.1rem] w-0 group-hover:w-full absolute left-1/2 -translate-x-1/2 bg-red-600 duration-200 ease-in translate-y-1"></div>
+                        </a><i class="las la-angle-down ml-1.5 "></i>
+                        <div class="hidden absolute bg-[#f9f9f9] min-w-[160px] shadow-md shadow-gray-400 pl-[12px] py-1.5 px-1.5 dropdown-content z-50 mt-[120px]">
+                            @foreach (CodeType item in Model)
+                            {
+                                <p><a asp-action="RentPropertyNews" asp-controller="Properties" asp-route-propertyType="@item.Id">Cho thuê @item.Title</a></p>
+                            }
 
-                            </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex items-center justify-end h-3/5 text-sm font-semibold gap-4">
-                <div class="hidden xl:block ">
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <button onclick="location.href='@Url.Action("Login", "Account")'" class="pr-4 hover:bg-slate-200 rounded-lg duration-300 p-4">
-                            <span>Đăng nhập</span>
-                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="flex items-center justify-end h-3/5 text-sm font-semibold gap-4">
+            <div class="hidden xl:block ">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <button onclick="location.href='@Url.Action("Login", "Account")'" class="pr-4 hover:bg-slate-200 rounded-lg duration-300 p-4">
+                        <span>Đăng nhập</span>
+                    </button>
 
-                        <span class="bg-gray-300 px-[0.5px]"></span>
+                    <span class="bg-gray-300 px-[0.5px]"></span>
                     <button onclick="location.href='@Url.Action("Register", "Account")'" class="hover:bg-slate-200 rounded-lg duration-300 p-4">
-                            <span>Đăng ký</span>
-                        </button>
-                    }
-                    else
-                    {
-                      <form  asp-action="LogOut" asp-controller="Account" method="post">
+                        <span>Đăng ký</span>
+                    </button>
+                }
+                else
+                {
+                    <form asp-action="LogOut" asp-controller="Account" method="post">
                         <button disabled="true" class="pr-4 hover:bg-slate-50 rounded-lg duration-300 p-4">
                             <span>@User.Identity.Name</span>
                         </button>
 
-                        <button class ="pr-4 hover:bg-slate-200 rounded-lg duration-300 p-4">
+                        <button class="pr-4 hover:bg-slate-200 rounded-lg duration-300 p-4">
                             <span>Logout</span>
                         </button>
-                        </form>
-                    }
+                    </form>
+                }
 
-                </div>
-                <button>
-                    <img src="https://anphuocland.com/assets/icons/menu.svg" alt="" class="h-5 block xl:hidden">
-                </button>
             </div>
+            <button>
+                <img src="https://anphuocland.com/assets/icons/menu.svg" alt="" class="h-5 block xl:hidden">
+            </button>
         </div>
-    </section>
+    </div>
+</section>

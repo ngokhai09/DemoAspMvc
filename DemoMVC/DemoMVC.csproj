@@ -46,6 +46,7 @@
     <Folder Include="Migrations\" />
     <Folder Include="Upload\" />
     <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <Target Name="Tailwind" BeforeTargets="Build">

@@ -17,10 +17,10 @@
                                 <swiper-container thumbs-swiper=".mySwiper2" space-between="10" navigation="true" class="mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff;">
                                     <swiper-slide class="ng-star-inserted swiper-slide-active" style="width: 757px; margin-right: 10px;">
                                         <div class="flex w-full h-[476px] justify-center items-center flex-col">
-                                            <div class="w-full h-full bg-cover bg-center" style="background-image: url('@Model.ThumbnailUrl');">
+                                            <div class="w-full h-full bg-cover bg-center" style="background-image: url(@("/img/" + Model.ThumbnailUrl));">
                                                 <div class="w-full h-full flex justify-center items-center backdrop-blur-lg">
                                                     <a class="glightbox" href="https://anphuocland.com:7100/files/public/property/2023/8/579aws9/579aws9_virtual_20230829t114424_638289063240926535.jpg">
-                                                        <img class="max-h-[476px] flex h-[476px] w-auto justify-center items-center object-cover" src="@Model.ThumbnailUrl">
+                                                        <img class="max-h-[476px] flex h-[476px] w-auto justify-center items-center object-cover" src="/img/@Model.ThumbnailUrl">
                                                     </a>
                                                 </div>
                                             </div>
@@ -29,7 +29,7 @@
                                 </swiper-container>
                                 <swiper-container space-between="10" slides-per-view="7" free-mode="true" watch-slides-progress="true" class="mySwiper2 mt-2.5 swiper-initialized swiper-horizontal swiper-free-mode swiper-watch-progress swiper-backface-hidden swiper-thumbs">
                                     <swiper-slide class="ng-star-inserted swiper-slide-thumb-active swiper-slide-visible swiper-slide-active" style="width: 99.5714px; margin-right: 10px;">
-                                        <img class="rounded-md h-[80px] w-full object-cover" src="@Model.ThumbnailUrl">
+                                        <img class="rounded-md h-[80px] w-full object-cover" src="/img/@Model.ThumbnailUrl">
                                     </swiper-slide><span class="swiper-notification" aria-live="assertive" aria-atomic="true" slot="container-end"></span>
                                 </swiper-container>
                             </section>

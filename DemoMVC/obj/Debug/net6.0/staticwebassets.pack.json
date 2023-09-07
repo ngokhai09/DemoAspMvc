@@ -17,6 +17,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\372419575_1266228984079616_8692836943728227147_n.jpg",
+      "PackagePath": "staticwebassets\\img\\372419575_1266228984079616_8692836943728227147_n.jpg"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\8qhr77w_virtual_20230901t141956_638291749937274520.jpg",
+      "PackagePath": "staticwebassets\\img\\8qhr77w_virtual_20230901t141956_638291749937274520.jpg"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\dca2g6r_virtual_20230831t102148_638290741634896680.jpg",
+      "PackagePath": "staticwebassets\\img\\dca2g6r_virtual_20230831t102148_638290741634896680.jpg"
+    },
+    {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\z4625659715438_00e84b6fe5c73f93fb9ef0f14296f022.jpg",
+      "PackagePath": "staticwebassets\\img\\z4625659715438_00e84b6fe5c73f93fb9ef0f14296f022.jpg"
+    },
+    {
       "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
