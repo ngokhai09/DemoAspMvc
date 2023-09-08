@@ -22,19 +22,21 @@
                 nhất
             </a>
             <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
-            <div >
-                <button id ="latest" onclick="sortByDate(`@ViewData["DateSortParam"]`)" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
+            <div id="latest">
+                <button onclick="sortByDate(``)" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
                     <span>Mới nhất</span>
                     <i class="las text-lg la-sort">
                     </i>
                 </button>
             </div>
             <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
-            <a onclick="sortByPrice()" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
+            <div id="price">
+                <button onclick="sortByPrice(`price_asc`)" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
                 <span>Giá</span>
                 <i class="las text-lg la-sort">
                 </i>
-            </a>
+                </button>
+            </div>
         </div>
     </div>
     <div class="ant-spin-container ng-star-inserted">
@@ -51,7 +53,7 @@
     <script>
         $.ajax({
             type: "Get",
-            url: "/Properties/GetHouseItems?size=@size",
+            url: "/Properties/GetHouseItems?size=" + $("#size").val(),
             contentType: "html",
             success: function (res) {
                 $("#houseList").html(res);
@@ -65,9 +67,7 @@
                 url: "/Properties/GetHouseItems?size=16",
                 contentType: "html",
                 success: function (res) {
-        @{
-            size = 16;
-        }
+        
                         $("#houseList").html(res);
 
                 }
@@ -77,23 +77,24 @@
         function sortByDate(sortParams) {
             $.ajax({
                 type: "Get",
-                url: "/Properties/GetHouseItems?size=@size&SortOrder=" + sortParams,
+                url: `/Properties/GetHouseItems?size=${$("#size").val()}&SortOrder=` + sortParams,
                 contentType: "html",
                 success: function (res) {
                     $("#houseList").html(res);
-                    $("#lastest").click(function () {
-                        sortByDate('@ViewData["DateSortParam"]')
-                    })
+                    let sort = sortParams == "" ? "time_asc" : "";
+                    $("#latest").html(`<button onclick="sortByDate('${sort}')" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200"><span>Mới nhất</span><i class="las text-lg la-sort"></i></button>`)
                 }
             })
         }
-        function sortByPrice() {
+        function sortByPrice(sortParams) {
             $.ajax({
                 type: "Get",
-                url: "/Properties/GetHouseItems?size=@size&SortOrder=@ViewData["PriceSortParam"]",
+                url: `/Properties/GetHouseItems?size=${$("#size").val()}&SortOrder=` + sortParams,
                 contentType: "html",
                 success: function (res) {
                     $("#houseList").html(res);
+                    let sort = sortParams == "price_asc" ? "price_desc" : "price_asc";
+                    $("#price").html(`<button onclick="sortByPrice('${sort}')" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200"><span>Giá</span><i class="las text-lg la-sort"></i></button>`)
 
                 }
             })

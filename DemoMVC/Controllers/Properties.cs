@@ -32,10 +32,8 @@ namespace DemoMVC.Controllers
         }
         public async Task<IActionResult> GetHouseItems(string sortOrder, int size = 8)
         {
-          
-
-            var @property = from n in _context.Property select n;
-
+            var @property = (from n in _context.Property orderby n.CreateOnDate descending select n).Take(size);
+            ViewData["size"] = size;
 
             switch (sortOrder)
             {
@@ -49,10 +47,9 @@ namespace DemoMVC.Controllers
                     property = property.OrderByDescending(x => x.TotalPrice);
                     break;
                 default:
-                    @property = property.OrderByDescending(x => x.CreateOnDate);
                     break;
             }
-            return PartialView("HouseItems",property.Take(size));
+            return PartialView("HouseItems",property.ToList());
         }
 
         // GET: Properties/Details/5
