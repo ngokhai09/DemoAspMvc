@@ -1,0 +1,169 @@
+﻿@model PaginatedList<DemoMVC.Models.Property>
+@{
+    ViewData["Title"] = "PropertyManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var property = Model;
+    var search = "";
+}
+
+
+
+
+<div class="max-w-screen-xl mx-auto pt-10 pb-7 px-3 sm:px-10 rounded-md w-full">
+    <div>
+        <h1 class="flex justify-center text-lg font-medium text-black mb-3">Danh sách bất động sản</h1>
+
+    </div>
+
+    <div class="flex justify-between items-center mb-5 w-full">
+        <div class="relative overflow-x-auto w-full shadow-md sm:rounded-lg">
+            <div class="flex justify-between pb-4 bg-white dark:bg-gray-900">
+                <div class="relative flex items-start">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+
+                    <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tìm bất động sản">
+
+                </div>
+                <div class="flex justify-end">
+                    <a class="font-medium text-amber-600 dark:text-blue-500 hover:underline" asp-action="create">Tạo mới</a>
+                </div>
+
+            </div>
+
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-amber-300 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Tiêu đề
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Diện tích (m2)
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Giá (VND)
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Loại
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Địa chỉ
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Loại giao dịch
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Trạng thái
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="property-list">
+                    @foreach (Property item in Model)
+                    {
+                        <tr class="bg-white border-b hover:bg-rose-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                @item.Title
+                            </th>
+                            <td class="px-6 py-4">
+                                @item.TotalArea
+                            </td>
+                            <td class="px-6 py-4">
+                                @item.TotalPrice
+                            </td>
+                            <td class="px-6 py-4">
+                                @item.PropertyCodeType.Title
+                            </td>
+                            <td class="px-6 py-4">
+                                @item.CommuneName - @item.DistrictName - @item.ProvinceName
+                            </td>
+                            <td class="px-6 py-4">
+                                @(item.TransactionTypeCode == "SALE" ? "Bán" : "Cho thuê")
+                            </td>
+                            <td class="px-6 py-4">
+                                @if (item.AllowTransaction)
+                                {
+                                    <span class="text-green-600 font-medium">Đang giao dịch</span>
+                                }
+                                else
+                                {
+                                    <span class="text-red-600 font-medium">Ngưng giao dịch</span>
+                                }
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a asp-action="details" asp-route-id="@item.Id" asp-route-PrevUrl="PropertyManage" class="mr-2 font-medium text-teal-600 dark:text-blue-500 hover:underline">Chi tiết</a>
+                                <span class="bg-gray-300 px-[0.5px]"></span>
+                                <a asp-action="edit" asp-route-id="@item.Id" asp-route-PrevUrl="PropertyManage" class="ml-2 font-medium text-sky-600 dark:text-blue-500 hover:underline">Sửa</a>
+                                <span class="bg-gray-300 px-[0.5px]"></span>
+                                <a asp-action="ChangeTransactionStatus" asp-route-id="@item.Id" class="ml-2 font-medium text-rose-600 dark:text-blue-500 hover:underline">InActive</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
+                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white" id="range">1-@(Model.Count)</span> of <span class="font-semibold text-gray-900 dark:text-white">@Model.Total</span></span>
+                <ul class="inline-flex -space-x-px text-sm h-8" id="pagination">
+                    <li>
+                        <a class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                    </li>
+                    @for (int i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <li>
+                            <a onclick="goTo(@i)" id="page-@i" class="@(i == 1 ? "active": "") [&.active]:bg-blue-600 [&.active]:text-white flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
+                        </li>
+                    }
+                    <li>
+                        <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script>
+    $("#table-search").keyup(function (event) {
+        $.ajax({
+            type: "Get",
+            url: "/Properties/SearchPartial?SearchString=" + $(this).val(),
+            contentType: "html",
+            success: function (res) {
+                $("#property-list").html(res);
+                pagination($("#totalPage").val(), $("#pageIndex").val());
+                $("#range").html($("#partial-range").val())
+            }
+        })
+
+    })
+    function pagination(totalPage, pageIndex) {
+        let html = `<li >
+                          <a id="next" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                     </li>`
+        for (let i = 1; i <= totalPage; i++) {
+            html += `<li><a onclick="goTo(${i})" class=" ${pageIndex == i ? "active" : ""} [&.active]:bg-blue-600 [&.active]:text-white flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>
+                                </li>`
+        }
+        $("#pagination").html(html + `<li>
+                       <a id="prev" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                 </li>
+            `)
+    }
+    function goTo(pageIndex) {
+        let search = $("#table-search").val();
+        $.ajax({
+            type: "Get",
+            url: `/Properties/SearchPartial?SearchString=${search}&pageNumber=${pageIndex}`,
+            contentType: "html",
+            success: function (res) {
+                $("#property-list").html(res);
+                pagination($("#totalPage").val(), $("#pageIndex").val());
+                $("#range").html($("#partial-range").val())
+            }
+        })
+    }
+</script>

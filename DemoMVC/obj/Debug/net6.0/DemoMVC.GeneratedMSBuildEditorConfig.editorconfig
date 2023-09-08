@@ -92,12 +92,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DotNet/DemoMVC/DemoMVC/Views/Properties/PropertyManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xQcm9wZXJ0eU1hbmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DotNet/DemoMVC/DemoMVC/Views/Properties/RentPropertyNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xSZW50UHJvcGVydHlOZXdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DotNet/DemoMVC/DemoMVC/Views/Properties/SalePropertyNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xTYWxlUHJvcGVydHlOZXdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNet/DemoMVC/DemoMVC/Views/Properties/SearchPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xTZWFyY2hQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DotNet/DemoMVC/DemoMVC/Views/Shared/Error.cshtml]

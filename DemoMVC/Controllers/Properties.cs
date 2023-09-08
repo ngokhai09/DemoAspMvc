@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using Microsoft.Data.SqlClient;
 using DemoMVC.Models.ViewModel;
-using Syncfusion.DocIO.DLS;
 using System.Runtime.CompilerServices;
+using System.Drawing.Printing;
 
 namespace DemoMVC.Controllers
 {
@@ -28,6 +28,11 @@ namespace DemoMVC.Controllers
         {
             ViewData["DateSortParam"] = String.IsNullOrEmpty(sortOrder) ? "time_asc" : "";
             ViewData["PriceSortParam"] = sortOrder == "price_asc" ? "price_desc" : "price_asc";
+            return View();
+        }
+        public async Task<IActionResult> GetHouseItems(string sortOrder, int size = 8)
+        {
+          
 
             var @property = from n in _context.Property select n;
 
@@ -47,7 +52,7 @@ namespace DemoMVC.Controllers
                     @property = property.OrderByDescending(x => x.CreateOnDate);
                     break;
             }
-            return View(property.ToList());
+            return PartialView("HouseItems",property.Take(size));
         }
 
         // GET: Properties/Details/5
@@ -106,6 +111,7 @@ namespace DemoMVC.Controllers
                 newProperty.CreateOnDate = DateTime.Now;
                 newProperty.LastModifiedOnDate = DateTime.Now;
                 newProperty.TransactionTypeCode = "SALE";
+                newProperty.AllowTransaction = true;
                 newProperty.CreateByUser = (from user in _context.User where user.UserName == User.Identity.Name select user).ToList()[0];
                 _context.Add(newProperty);
                 await _context.SaveChangesAsync();
@@ -147,7 +153,7 @@ namespace DemoMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,ProvinceName,DistrictName,CommuneName,ThumbnailUrl,PropertyCodeType,TotalArea,TotalPrice")] PropertyViewModel @property, IFormFile? file)
         {
-            Property old = _context.Property.Include(p => p.PropertyCodeType).Include(p => p.CreateByUser).Where(p=>p.Id == id).FirstOrDefault();
+            Property old = _context.Property.Include(p => p.PropertyCodeType).Include(p => p.CreateByUser).Where(p => p.Id == id).FirstOrDefault();
             if (old == null && id != @property.Id)
             {
                 return NotFound();
@@ -244,7 +250,10 @@ namespace DemoMVC.Controllers
         {
 
             var @property = from n in _context.Property orderby n.CreateOnDate descending where n.TransactionTypeCode == "SALE" select n;
-
+            if (!String.IsNullOrEmpty(searchParams.Reset))
+            {
+                searchParams = new SearchParams();
+            }
             if (searchParams.SearchString != null)
             {
                 pageNumber = 1;
@@ -332,7 +341,7 @@ namespace DemoMVC.Controllers
             ViewData["CurrentFilter"] = searchParams.SearchString;
             ViewData["PropertyFilter"] = searchParams.PropertyType;
             ViewBag.AddressFilter = searchParams.PropertyAddress;
-            ViewData["PriceFilter"] = String.IsNullOrEmpty(searchParams.PriceFilter) ? "0-30" : searchParams.PriceFilter;
+            ViewData["PriceFilter"] = String.IsNullOrEmpty(searchParams.PriceFilter) ? "0-999" : searchParams.PriceFilter;
             ViewData["AreaFilter"] = String.IsNullOrEmpty(searchParams.AreaFilter) ? "0-1000" : searchParams.AreaFilter;
 
             if (!String.IsNullOrEmpty(searchParams.SearchString))
@@ -350,7 +359,7 @@ namespace DemoMVC.Controllers
             if (!String.IsNullOrEmpty(searchParams.PriceFilter))
             {
                 double[] price = Array.ConvertAll(searchParams.PriceFilter.Split("-"), double.Parse);
-                property = property.Where(p => p.TotalPrice >= (decimal)(price[0] * 1e9) && p.TotalPrice <= (decimal)(price[1] * 1e9));
+                property = property.Where(p => p.TotalPrice >= (decimal)(price[0] * 1e6) && p.TotalPrice <= (decimal)(price[1] * 1e6));
             }
             if (!String.IsNullOrEmpty(searchParams.AreaFilter))
             {
@@ -359,6 +368,45 @@ namespace DemoMVC.Controllers
             }
             int pageSize = 2;
             return View(await PaginatedList<Property>.CreateAync(property.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
+        [Authorize]
+        public async Task<IActionResult> PropertyManage()
+        {
+            var property = _context.Property.Include(p => p.CreateByUser).Include(p => p.PropertyCodeType).Where(u => u.CreateByUser.UserName == User.Identity.Name);
+            int pageSize = 3;
+            return View(await PaginatedList<Property>.CreateAync(property.AsNoTracking(), 1, pageSize));
+        }
+        [Authorize]
+        public async Task<ActionResult> SearchPartial(string searchString, int? pageNumber, string currentFilter)
+        {
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+            var property = from p in _context.Property select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                property = property.Where(p => p.Title.Contains(searchString) || p.ProvinceName.Contains(searchString) || p.DistrictName.Contains(searchString) || p.CommuneName.Contains(searchString));
+            }
+            int pageSize = 3;
+
+            return PartialView(await PaginatedList<Property>.CreateAync(property.Include(p=> p.PropertyCodeType).Include(p=>p.CreateByUser).Where(p=>p.CreateByUser.UserName == User.Identity.Name).AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
+        [Authorize]
+        public async Task<IActionResult> ChangeTransactionStatus(Guid id)
+        {
+            var property = _context.Property.Where(p=>p.Id == id).FirstOrDefault();
+            if (property != null)
+            {
+                property.AllowTransaction = !property.AllowTransaction;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(PropertyManage));
         }
     }
 }

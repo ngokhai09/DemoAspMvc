@@ -1,16 +1,14 @@
-@model IEnumerable<DemoMVC.Models.Property>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var size = 8;
 }
 <div class="relative group">
     @Html.Partial("_Filler")
 </div>
 <div class="max-w-screen-xl mx-auto pt-10 pb-7 px-3 sm:px-10 rounded-md">
     <div class="flex justify-between items-center mb-5">
-        <h3
-            class="text-lg sm:text-2xl font-semibold text-black">
+        <h3 class="text-lg sm:text-2xl font-semibold text-black">
             Bất động sản dành cho bạn
         </h3>
         <div class="hidden xl:flex items-center">
@@ -24,27 +22,82 @@
                 nhất
             </a>
             <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
-            <a class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200" asp-route-sortOrder="@ViewData["DateSortParam"]" asp-action="Index">
-                <span>Mới nhất</span>
-                <i
-                    class="las text-lg la-sort">
-                </i>
-            </a>
+            <div >
+                <button id ="latest" onclick="sortByDate(`@ViewData["DateSortParam"]`)" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
+                    <span>Mới nhất</span>
+                    <i class="las text-lg la-sort">
+                    </i>
+                </button>
+            </div>
             <div class="bg-black px-[0.75px] h-3 mx-2.5"></div>
-            <a class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200" asp-route-sortOrder="@ViewData["PriceSortParam"]" asp-action="Index">
+            <a onclick="sortByPrice()" class="text-black flex items-center gap-1 py-1 px-2 hover:bg-gray-200">
                 <span>Giá</span>
-                <i
-                    class="las text-lg la-sort">
+                <i class="las text-lg la-sort">
                 </i>
             </a>
         </div>
     </div>
     <div class="ant-spin-container ng-star-inserted">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden relative">
-            @foreach (var item in Model)
-            {
-                Html.RenderPartial("HouseItems", item);
-            }
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden relative" id="houseList">
         </div>
     </div>
+
+    <div class="flex justify-center p-5" id="expand">
+        <button onclick="expand()" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg px-8 py-4 ng-star-inserted"> Mở rộng <i class="las la-angle-down ml-1 font-bold"></i></button>
+    </div>
+
 </div>
+@section Scripts {
+    <script>
+        $.ajax({
+            type: "Get",
+            url: "/Properties/GetHouseItems?size=@size",
+            contentType: "html",
+            success: function (res) {
+                $("#houseList").html(res);
+
+            }
+        })
+
+        function expand() {
+            $.ajax({
+                type: "Get",
+                url: "/Properties/GetHouseItems?size=16",
+                contentType: "html",
+                success: function (res) {
+        @{
+            size = 16;
+        }
+                        $("#houseList").html(res);
+
+                }
+            })
+            $("#expand").html('<button onclick="location.href=`@Url.Action("SalePropertyNews", "Properties")`" class="cursor-pointer text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg px-8 py-4 ng-star-inserted"> Xem tiếp</button>')
+        }
+        function sortByDate(sortParams) {
+            $.ajax({
+                type: "Get",
+                url: "/Properties/GetHouseItems?size=@size&SortOrder=" + sortParams,
+                contentType: "html",
+                success: function (res) {
+                    $("#houseList").html(res);
+                    $("#lastest").click(function () {
+                        sortByDate('@ViewData["DateSortParam"]')
+                    })
+                }
+            })
+        }
+        function sortByPrice() {
+            $.ajax({
+                type: "Get",
+                url: "/Properties/GetHouseItems?size=@size&SortOrder=@ViewData["PriceSortParam"]",
+                contentType: "html",
+                success: function (res) {
+                    $("#houseList").html(res);
+
+                }
+            })
+        }
+    </script>
+
+}

@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\img\\dca2g6r_virtual_20230831t102148_638290741634896680.jpg"
     },
     {
+      "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\default.png",
+      "PackagePath": "staticwebassets\\img\\default.png"
+    },
+    {
       "Id": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\z4625659715438_00e84b6fe5c73f93fb9ef0f14296f022.jpg",
       "PackagePath": "staticwebassets\\img\\z4625659715438_00e84b6fe5c73f93fb9ef0f14296f022.jpg"
     },

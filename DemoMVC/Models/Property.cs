@@ -68,6 +68,9 @@ public class Property
     public decimal TotalArea { get; set; }
     [Required]
     public decimal TotalPrice { get; set; }
+
+    [BindNever]
+    public bool AllowTransaction { get; set; }
     [BindNever]
     public string? StatusCode { get; set; }
     [BindNever]

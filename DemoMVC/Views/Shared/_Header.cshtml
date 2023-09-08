@@ -27,7 +27,7 @@
                 <li class="cursor-pointer text-black " tabindex="0">
                     <div class="flex justify-between items-center dropdown">
                         <a asp-action="RentPropertyNews" asp-controller="Properties" class="group relative">
-                            <span>Nhà đất bán</span>
+                            <span>Nhà đất cho thuê</span>
                             <div id="slider" class="z-10 h-[0.1rem] w-0 group-hover:w-full absolute left-1/2 -translate-x-1/2 bg-red-600 duration-200 ease-in translate-y-1"></div>
                         </a><i class="las la-angle-down ml-1.5 "></i>
                         <div class="hidden absolute bg-[#f9f9f9] min-w-[160px] shadow-md shadow-gray-400 pl-[12px] py-1.5 px-1.5 dropdown-content z-50 mt-[120px]">
@@ -57,9 +57,9 @@
                 else
                 {
                     <form asp-action="LogOut" asp-controller="Account" method="post">
-                        <button disabled="true" class="pr-4 hover:bg-slate-50 rounded-lg duration-300 p-4">
+                        <a asp-action="PropertyManage" asp-controller="Properties" class="pr-4 hover:bg-slate-50 rounded-lg duration-300 p-4">
                             <span>@User.Identity.Name</span>
-                        </button>
+                        </a>
 
                         <button class="pr-4 hover:bg-slate-200 rounded-lg duration-300 p-4">
                             <span>Logout</span>

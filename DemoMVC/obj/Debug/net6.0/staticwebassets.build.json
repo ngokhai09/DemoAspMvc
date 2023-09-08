@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bqnHcsO2b229q5DayrkYFmVDi26ybqWGaCXimyu1/6E=",
+  "Hash": "U9HdTBH29yGS9ft2E5dR4OzeOpv7Pr+17ELDLccIQ1w=",
   "Source": "DemoMVC",
   "BasePath": "_content/DemoMVC",
   "Mode": "Default",
@@ -1171,6 +1171,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\dca2g6r_virtual_20230831t102148_638290741634896680.jpg"
+    },
+    {
+      "Identity": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\default.png",
+      "SourceId": "DemoMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\",
+      "BasePath": "_content/DemoMVC",
+      "RelativePath": "img/default.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\default.png"
     },
     {
       "Identity": "D:\\DotNet\\DemoMVC\\DemoMVC\\wwwroot\\img\\z4625659715438_00e84b6fe5c73f93fb9ef0f14296f022.jpg",

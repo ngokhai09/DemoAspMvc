@@ -302,14 +302,3 @@ D:\DotNet\DemoMVC\DemoMVC\obj\Debug\net6.0\ref\DemoMVC.dll
 D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\DotNet\DemoMVC\DemoMVC\obj\Debug\net6.0\DemoMVC.MvcApplicationPartsAssemblyInfo.cs
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.Compression.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.EJ.Web.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.OfficeChart.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.DocIO.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.Licensing.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.Pdf.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.Presentation.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.EJ.Export.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.EJ.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.Linq.Base.dll
-D:\DotNet\DemoMVC\DemoMVC\bin\Debug\net6.0\Syncfusion.XlsIO.Base.dll

@@ -1,0 +1,52 @@
+﻿@model PaginatedList<DemoMVC.Models.Property>
+@{
+    var des = Model.PageIndex * Model.PageSize;
+}
+<input hidden id="totalPage" value="@Model.TotalPage"/>
+<input hidden id="pageIndex" value="@Model.PageIndex" />
+<input hidden id="partial-range" value="@((Model.PageIndex - 1) * Model.PageSize + 1)- @(des > Model.Total? Model.Total : des)" />
+
+@if(Model != null)
+{
+    @foreach (Property item in Model)
+    {
+        <tr class="bg-white border-b hover:bg-rose-50">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                @item.Title
+            </th>
+            <td class="px-6 py-4">
+                @item.TotalArea
+            </td>
+            <td class="px-6 py-4">
+                @item.TotalPrice
+            </td>
+            <td class="px-6 py-4">
+                @item.PropertyCodeType.Title
+            </td>
+            <td class="px-6 py-4">
+                @item.CommuneName - @item.DistrictName - @item.ProvinceName
+            </td>
+            <td class="px-6 py-4">
+                @(item.TransactionTypeCode == "SALE" ? "Bán" : "Cho thuê")
+            </td>
+            <td class="px-6 py-4">
+                @if (item.AllowTransaction)
+                {
+                    <span class="text-green-600 font-medium">Đang giao dịch</span>
+                }
+                else
+                {
+                    <span class="text-red-600 font-medium">Ngưng giao dịch</span>
+                }
+            </td>
+            <td class="px-6 py-4 text-right">
+                <a asp-action="details" asp-route-id="@item.Id" asp-route-PrevUrl="PropertyManage" class="mr-2 font-medium text-teal-600 dark:text-blue-500 hover:underline">Chi tiết</a>
+                <span class="bg-gray-300 px-[0.5px]"></span>
+                <a asp-action="edit" asp-route-id="@item.Id" asp-route-PrevUrl="PropertyManage" class="ml-2 font-medium text-sky-600 dark:text-blue-500 hover:underline">Sửa</a>
+                <span class="bg-gray-300 px-[0.5px]"></span>
+                <a asp-action="ChangeTransactionStatus" asp-route-id="@item.Id" class="ml-2 font-medium text-rose-600 dark:text-blue-500 hover:underline">InActive</a>
+            </td>
+
+        </tr>
+    }
+}

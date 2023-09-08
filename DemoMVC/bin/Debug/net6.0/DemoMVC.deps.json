@@ -17,7 +17,6 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.21",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16",
-          "Syncfusion.AspNet": "22.1.34",
           "System.Security.Claims": "4.3.0"
         },
         "runtime": {
@@ -596,12 +595,6 @@
           "lib/net6.0/zh-Hant/Humanizer.resources.dll": {
             "locale": "zh-Hant"
           }
-        }
-      },
-      "jQuery/1.7.1": {},
-      "jQuery.Validation/1.9.0": {
-        "dependencies": {
-          "jQuery": "1.7.1"
         }
       },
       "MessagePack/2.1.152": {
@@ -2202,121 +2195,6 @@
           }
         }
       },
-      "Syncfusion.AspNet/22.1.34": {
-        "dependencies": {
-          "Syncfusion.DocIO.AspNet": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34",
-          "Syncfusion.Pdf.AspNet": "22.1.34",
-          "Syncfusion.Presentation.AspNet": "22.1.34",
-          "Syncfusion.Web.Base": "22.1.34",
-          "Syncfusion.XlsIO.AspNet": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.Compression.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          },
-          "lib/net46/Syncfusion.EJ.Web.dll": {
-            "assemblyVersion": "22.1.34.0",
-            "fileVersion": "22.1.34.0"
-          },
-          "lib/net46/Syncfusion.OfficeChart.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
-      "Syncfusion.Compression.Base/22.1.34": {},
-      "Syncfusion.DocIO.AspNet/22.1.34": {
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34",
-          "Syncfusion.OfficeChart.Base": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.DocIO.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
-      "Syncfusion.JavaScript/22.1.34": {
-        "dependencies": {
-          "jQuery": "1.7.1",
-          "jQuery.Validation": "1.9.0"
-        }
-      },
-      "Syncfusion.Licensing/22.1.34": {
-        "runtime": {
-          "lib/net6.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "22.1.34.0",
-            "fileVersion": "22.1.34.0"
-          }
-        }
-      },
-      "Syncfusion.OfficeChart.Base/22.1.34": {
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34"
-        }
-      },
-      "Syncfusion.Pdf.AspNet/22.1.34": {
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.Pdf.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
-      "Syncfusion.Presentation.AspNet/22.1.34": {
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34",
-          "Syncfusion.OfficeChart.Base": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.Presentation.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
-      "Syncfusion.Web.Base/22.1.34": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1",
-          "Syncfusion.JavaScript": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.EJ.Export.dll": {
-            "assemblyVersion": "22.1.34.0",
-            "fileVersion": "22.1.34.0"
-          },
-          "lib/net46/Syncfusion.EJ.dll": {
-            "assemblyVersion": "22.1.34.0",
-            "fileVersion": "22.1.34.0"
-          },
-          "lib/net46/Syncfusion.Linq.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
-      "Syncfusion.XlsIO.AspNet/22.1.34": {
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34"
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.XlsIO.Base.dll": {
-            "assemblyVersion": "22.1460.34.0",
-            "fileVersion": "22.1460.34.0"
-          }
-        }
-      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -3540,20 +3418,6 @@
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
     },
-    "jQuery/1.7.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kxMYpP0to5Q2NGoV30zVIl/vqWt42vDEQ7JOjefewwKTwitv5XijF5iP+4Bl99t1lujA1Y1/1KwLMkJl1/oJjw==",
-      "path": "jquery/1.7.1",
-      "hashPath": "jquery.1.7.1.nupkg.sha512"
-    },
-    "jQuery.Validation/1.9.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ACp4/WHT2EEklKpL9dSMCJowGpVs7KRYA0L3Lp7YdVTrNubjDW2eyw+nuQpJJmRh+r5SBwF61UG0dO6+SzqA7A==",
-      "path": "jquery.validation/1.9.0",
-      "hashPath": "jquery.validation.1.9.0.nupkg.sha512"
-    },
     "MessagePack/2.1.152": {
       "type": "package",
       "serviceable": true,
@@ -4414,76 +4278,6 @@
       "sha512": "sha512-lxCZarZdvAsMl2zw9bXHrXK6RxVhB4b23iTFhCOdHFhxfbsxLxWf+ocvswJwR/9Wh/E//ddMi+wJGqUKV7VwoA==",
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.2",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512"
-    },
-    "Syncfusion.AspNet/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-h1KtcSCbWloHR/q6e61v5TtEPYdJf655VhZvw2z8pGfMEtIyvmhucQ+524cJ8ApYbtg3cqVZICgV+Ivb8u9gJw==",
-      "path": "syncfusion.aspnet/22.1.34",
-      "hashPath": "syncfusion.aspnet.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.Compression.Base/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zipVSNBIMc2OMcL9amwulWh/dQsvFOvONSe+Khy9QOT3PMBbI+pXF/n5FunB+z4dg3/+sAxFkugbSr821K78IQ==",
-      "path": "syncfusion.compression.base/22.1.34",
-      "hashPath": "syncfusion.compression.base.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.DocIO.AspNet/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ck0/nw9dhxDWGApCJX/V3Gi3YYWZOxkWnHS8lrseoi7MknqPBYYRKUJQuHFf8QNo/beNId2ncBoAT+ttR6s8JQ==",
-      "path": "syncfusion.docio.aspnet/22.1.34",
-      "hashPath": "syncfusion.docio.aspnet.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.JavaScript/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CB2WvAEv3l8rUEkoEZTGR8gDCkQRedu/8Yk7UAyE1ZB5FalXmY7HP+dW9gpEhpwZX4b9XCkm5HcrOJRThc4G9Q==",
-      "path": "syncfusion.javascript/22.1.34",
-      "hashPath": "syncfusion.javascript.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.Licensing/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-jsvGrJgBc2KUMhUbLc1QPTqZkSHEZsUiPOcmu6DDvhYIV9cv1z83gohwHfmtFaRfBVezW7Dhn1qehHSOPIMo/w==",
-      "path": "syncfusion.licensing/22.1.34",
-      "hashPath": "syncfusion.licensing.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.OfficeChart.Base/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1kb4EWL12yyt1QeJUuIMdzPI/ae41TuuLvEfvyfzeY88fETP8//iMTD08xQeuA1OualN2bLpKuHGpxl2JnlE8g==",
-      "path": "syncfusion.officechart.base/22.1.34",
-      "hashPath": "syncfusion.officechart.base.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.Pdf.AspNet/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-f1f4C9JTIIDSQi26Tkr8NixzV01CupIcpYDoFT0JGRh2xJt1nvem/Ytv5tpJ42ZFvstfs/QWCa0GuRAgqIGrEw==",
-      "path": "syncfusion.pdf.aspnet/22.1.34",
-      "hashPath": "syncfusion.pdf.aspnet.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.Presentation.AspNet/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-684CQeZ+JAKW8BR0F97ox+z64frw6ayTQKlswS1PV1oCWQyyVZn1TNBySzuM5ik0yY3fk3xatX7Q8YBxrjD6xg==",
-      "path": "syncfusion.presentation.aspnet/22.1.34",
-      "hashPath": "syncfusion.presentation.aspnet.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.Web.Base/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-9pQg63tjionGetsykAhKQ0eKWwqbzcjo38f/UGeJTg9A8E6HVfHBAlx5GORXhuxeyCZhh8+DvW+3doaZAZmXaQ==",
-      "path": "syncfusion.web.base/22.1.34",
-      "hashPath": "syncfusion.web.base.22.1.34.nupkg.sha512"
-    },
-    "Syncfusion.XlsIO.AspNet/22.1.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-qrGTDoBCiUFnbZC6x5v5s6UyK8cx9auvIA1eCih6JkL/BnbwoUR9jYp9kJr2+Hy2+vJWcX3yJtwNEu650GoL5w==",
-      "path": "syncfusion.xlsio.aspnet/22.1.34",
-      "hashPath": "syncfusion.xlsio.aspnet.22.1.34.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UfWBft9nT5r3Q0jzuzD1o6/d8pfHDDgkrPFWbrpLS+RFVTU0t0aLJd8lYqLtqjfjzZxMYr/TDJD/ede/nnwECQ==",
+  "dgSpecHash": "T/5/nR+eOrPRCgMTKzmN4GZqgbjjG7fIHXetKJCpk5NCholDyX2tGd1iM8JCRYVrrfAqRfPDHySgyw09MPKB7w==",
   "success": true,
   "projectFilePath": "D:\\DotNet\\DemoMVC\\DemoMVC\\DemoMVC.csproj",
   "expectedPackageFiles": [
@@ -56,8 +56,6 @@
     "C:\\Users\\khain\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\jquery\\1.7.1\\jquery.1.7.1.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\jquery.validation\\1.9.0\\jquery.validation.1.9.0.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
@@ -181,16 +179,6 @@
     "C:\\Users\\khain\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.2\\sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.aspnet\\22.1.34\\syncfusion.aspnet.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.compression.base\\22.1.34\\syncfusion.compression.base.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.docio.aspnet\\22.1.34\\syncfusion.docio.aspnet.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.javascript\\22.1.34\\syncfusion.javascript.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.licensing\\22.1.34\\syncfusion.licensing.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.officechart.base\\22.1.34\\syncfusion.officechart.base.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.pdf.aspnet\\22.1.34\\syncfusion.pdf.aspnet.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.presentation.aspnet\\22.1.34\\syncfusion.presentation.aspnet.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.web.base\\22.1.34\\syncfusion.web.base.22.1.34.nupkg.sha512",
-    "C:\\Users\\khain\\.nuget\\packages\\syncfusion.xlsio.aspnet\\22.1.34\\syncfusion.xlsio.aspnet.22.1.34.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
@@ -278,96 +266,5 @@
     "C:\\Users\\khain\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\khain\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Syncfusion.Web.Base 22.1.34 depends on Newtonsoft.Json (>= 6.0.0) but Newtonsoft.Json 6.0.0 was not found. An approximate best match of Newtonsoft.Json 6.0.1 was resolved.",
-      "libraryId": "Newtonsoft.Json",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.AspNet",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Compression.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Compression.Base",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.DocIO.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.DocIO.AspNet",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.OfficeChart.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.OfficeChart.Base",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Pdf.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Pdf.AspNet",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Presentation.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Presentation.AspNet",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Web.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Web.Base",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.XlsIO.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.XlsIO.AspNet",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

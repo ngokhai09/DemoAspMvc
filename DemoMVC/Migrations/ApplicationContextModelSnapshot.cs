@@ -121,6 +121,9 @@ namespace DemoMVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("AllowTransaction")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("CommuneCode")
                         .HasColumnType("decimal(18,2)");
 

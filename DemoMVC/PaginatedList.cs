@@ -7,12 +7,14 @@ namespace DemoMVC
         public int PageIndex { get; private set; }
         public int TotalPage { get; private set; }
         public int Total { get; private set; }
+        public int PageSize { get; private set; }
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
             TotalPage = (int)Math.Ceiling(count / (double)pageSize);
             Total = count;
+            PageSize = pageSize;
             this.AddRange(items);
         }
         public bool HasPreviousPage => PageIndex > 1;
