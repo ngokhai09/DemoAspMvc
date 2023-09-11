@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap">
-                        <div class="w-full lg:w-6/12 px-4">
+                        <div class="w-full lg:w-8/12 px-4">
                             <div class="relative w-full mb-3">
                                 <label asp-for="Title" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                     Tiêu đề
@@ -42,8 +42,15 @@
                                 <span asp-validation-for="Title" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="w-full lg:w-6/12 px-4">
+                        <div class="w-full lg:w-4/12 px-4">
                             <div class="relative w-full mb-3">
+                                <label asp-for="TransactionTypeCode" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Trạng thái bất động sản
+                                </label>
+                                <select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" asp-for="TransactionTypeCode">
+                                    <option value="SALE">Bán</option>
+                                    <option value="RENT">Cho thuê</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -62,7 +69,7 @@
                                 <label asp-for="TotalPrice" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                     Giá
                                 </label>
-                                <input asp-for="TotalPrice" type="number" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <input id="price" asp-for="TotalPrice" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
 
                             </div>
@@ -150,6 +157,14 @@
             render.readAsDataURL(file);
         }
     })
+    $("#price").keyup(function(){
+        let val = numberWithCommas($(this).val());
+        $(this).val(val)
+    })
+    function numberWithCommas(x) {
+        x = x.toString().replaceAll(".", "");
+        return x.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+    }
 </script>
 
 @section Scripts

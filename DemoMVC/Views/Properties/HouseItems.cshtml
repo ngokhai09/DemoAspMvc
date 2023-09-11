@@ -23,8 +23,15 @@
                     @item.Title
                 </h1>
                 <div class="flex flex-row items-center gap-2">
-                    <span class="text-red-600 text-base truncate font-medium ng-star-inserted">
-                        @item.TotalPrice
+                    <span class="text-red-600 text-base truncate font-medium ng-star-inserted">                        
+                        @if (item.TotalPrice >= (decimal)1e9)
+                        {
+                            <span> @(Math.Round(item.TotalPrice / (decimal)1e9, 2)) tỷ VNĐ</span>
+                        }
+                        else
+                        {
+                            <span> @(Math.Round(item.TotalPrice / (decimal)1e6, 2)) triệu VNĐ</span>
+                        }
                     </span>
                     <span class="text-gray-500 mb-2">
                         .
@@ -45,13 +52,17 @@
                     <p class="text-sm text-gray-400 cursor-pointer" id="time">
                         @{
                             int time = (int)(DateTime.Now - item.CreateOnDate).TotalMinutes;
-
                         }
                         Đăng
-                        @if (time < 60) { }
+
+                        @if (time < 60)
+                        {
+                            <span> @(time) Phút trước</span>
+                        }
                         else if (time < 24 * 60)
                         {
-                            <span> @(time /60) Giờ trước</span>
+
+
                         }
                         else if (time < 60 * 24 * 30)
                         {
@@ -74,11 +85,19 @@
                 <div class="flex flex-row justify-end items-center text-xs text-amber-700">
                     @item.PropertyCodeType?.Title
                 </div>
+                @if (item.AllowTransaction)
+                {
+                    <p class="py-1 px-2 ng-star-inserted" style="background-color: rgb(59, 130, 246); color: rgb(255, 255, 255)">
+                        Đang bán
+                    </p>
+                }
+                else
+                {
+                    <p class="py-1 px-2 ng-star-inserted" style="background-color: rgb(239, 68, 68); color: rgb(255, 255, 255);">
+                        Ngưng giao dịch
+                    </p>
+                }
 
-                <p class="py-1 px-2 ng-star-inserted"
-                   style="background-color: rgb(59, 130, 246); color: rgb(255, 255, 255)">
-                    Đang bán
-                </p>
 
             </div>
         </div>

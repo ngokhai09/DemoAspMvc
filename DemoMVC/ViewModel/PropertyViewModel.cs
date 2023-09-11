@@ -14,6 +14,8 @@ public class PropertyViewModel
     public string ThumbnailUrl { get; set; }
     public string PropertyCodeType { get; set; }
     public decimal TotalArea { get; set; }
-    public decimal TotalPrice { get; set; }
+    public string TotalPrice { get; set; }
+
+    public string TransactionTypeCode { get; set; }
 
 }

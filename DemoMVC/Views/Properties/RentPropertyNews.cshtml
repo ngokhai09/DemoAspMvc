@@ -2,8 +2,8 @@
 @{
     ViewData["Title"] = "SalePropertyNews";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var prevDisabled = !Model.HasPreviousPage ? "pointer-events-none" : "";
-    var nextDisabled = !Model.HasNextPage ? "pointer-events-none" : "";
+    var prevDisabled = !Model.HasPreviousPage ? "cursor-not-allowed" : "";
+    var nextDisabled = !Model.HasNextPage ? "cursor-not-allowed" : "";
 
 }
 
@@ -102,7 +102,7 @@
                     <div class="mb-3">
                         <a class="text-sm text-gray-600 mb-5" title="Nhà đất cho thuê tại Việt Nam"> Bán </a>
                         <span class="text-sm text-gray-600"> / </span>
-                        <a class="text-sm font-medium text-black mb-3" title="Nhà đất bán trên toàn quốc">Nhà đất bán trên toàn quốc</a>
+                        <a class="text-sm font-medium text-black mb-3" title="Nhà đất cho thuê trên toàn quốc">Nhà đất bán trên toàn quốc</a>
                     </div>
                     <h1 class="text-2xl font-semibold mb-5">Nhà đất cho thuê trên toàn quốc</h1><p class="text-sm font-medium text-black mb-3">Hiện có @Model.Total bất động sản</p>
                 </div>@foreach (var item in Model)

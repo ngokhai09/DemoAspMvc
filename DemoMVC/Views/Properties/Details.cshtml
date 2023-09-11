@@ -37,18 +37,12 @@
                     </div>
                     <div class="flex flex-col gap-2 mt-2">
                         <div class="flex justify-between">
-                            <h5 class="flex line-clamp-1"><span class="text-gray-400 font-normal ng-star-inserted"> Bán / @Model.ProvinceName / @Model.DistrictName / </span> @Model.Title </h5>
-                            @if(User.Identity.Name == Model.CreateByUser.UserName)
-                            {
-                                <div class="flex justify-end gap-2">
-                                    <a class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" asp-action="Edit" asp-route-id="@Model.Id">
-                                        Sửa
-                                    </a>
-                                    <a class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" asp-action="Delete" asp-route-id="@Model.Id">
-                                        Xóa
-                                    </a>
-                                </div>
-                            }
+                            <h6 class="flex line-clamp-1">
+                                <span class="text-gray-400 font-normal whitespace-nowrap h-fit">
+                                    Bán / @Model.ProvinceName / @Model.DistrictName /&nbsp;
+                                </span><span> @Model.Title</span>
+                            </h6>
+
                         </div>
                         <div class="mt-2">
                             <span class="text-xl font-semibold text-gray-900">@Model.Title</span>
@@ -63,7 +57,7 @@
                                         <span class="text-sm text-gray-500 font-normal">Ngày đăng</span><br><span class="text-sm text-gray-900 font-semibold">27/08/2023</span>
                                     </div>
                                     <div>
-                                        <span class="text-sm text-gray-500 font-normal">Loại hình</span><br><span class="text-sm text-gray-900 font-semibold ng-star-inserted">Bán</span>
+                                        <span class="text-sm text-gray-500 font-normal">Loại hình</span><br><span class="text-sm text-gray-900 font-semibold ng-star-inserted">@(Model.TransactionTypeCode == "SALE" ? "Bán" : "Cho thuê")</span>
                                     </div>
                                     <div>
                                         <span class="text-sm text-gray-500 font-normal">Loại bất động sản</span><br><span class="text-sm text-gray-900 font-semibold">@Model.PropertyCodeType.Title</span>
@@ -79,10 +73,32 @@
                                     <label class="text-sm text-gray-400 font-normal">Mức giá</label>
                                 </div>
                                 <div class="mt-1">
-                                    <span class="text-sm text-gray-900 font-semibold ng-star-inserted">@Model.TotalPrice VND</span>
+                                    <span class="text-sm text-gray-900 font-semibold ng-star-inserted">
+                                        @if (Model.TotalPrice >= (decimal)1e9)
+                                        {
+                                            <span> @(Model.TotalPrice / (decimal)1e9) tỷ VNĐ</span>
+                                        }
+                                        else
+                                        {
+                                            <span> @(Model.TotalPrice / (decimal)1e6) triệu VNĐ</span>
+                                        }
+                                    </span>
                                 </div>
                                 <div class="mt-1 mb-2">
-                                    <span class="text-sm text-gray-400 font-normal ng-star-inserted"> ~33,50 triệu /m²</span>
+                                    <span class="text-sm text-gray-400 font-normal ng-star-inserted">
+                                        @{
+                                            decimal price = Math.Round(Model.TotalPrice / Model.TotalArea);
+                                        }
+                                        ~@if (price >= (decimal)1e6)
+                                        {
+                                            <span>@(Math.Round(price / (decimal)1e6)) triệu</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@(price)</span>
+                                        }
+                                        VND /m²
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-span-1">
@@ -117,7 +133,7 @@
                             <span class="text-lg font-medium text-gray-900">Thông tin mô tả</span>
                         </div>
                         <span class="text-sm text-gray-900 font-normal whitespace-pre-line">
-                           @Model.Description
+                            @Model.Description
                         </span>
                         <div class="mt-5"></div>
                     </div>

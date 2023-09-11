@@ -20,7 +20,8 @@ public class Property
         CommuneName = newProperty.CommuneName;
         ThumbnailUrl = newProperty.ThumbnailUrl;
         TotalArea = newProperty.TotalArea;
-        TotalPrice = newProperty.TotalPrice;
+        TotalPrice = decimal.Parse(newProperty.TotalPrice.Replace(".", ""));
+        TransactionTypeCode = newProperty.TransactionTypeCode;
     }
     
 

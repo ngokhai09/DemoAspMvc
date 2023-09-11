@@ -88,7 +88,7 @@ namespace DemoMVC.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,ProvinceName,DistrictName,CommuneName,ThumbnailUrl,PropertyCodeType,TotalArea,TotalPrice")] PropertyViewModel @property, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,ProvinceName,DistrictName,CommuneName,ThumbnailUrl,PropertyCodeType,TotalArea,TotalPrice,TransactionTypeCode")] PropertyViewModel @property, IFormFile file)
         {
 
 
@@ -107,7 +107,6 @@ namespace DemoMVC.Controllers
                     _context.CodeTypes.Find(Guid.Parse(@property.PropertyCodeType));
                 newProperty.CreateOnDate = DateTime.Now;
                 newProperty.LastModifiedOnDate = DateTime.Now;
-                newProperty.TransactionTypeCode = "SALE";
                 newProperty.AllowTransaction = true;
                 newProperty.CreateByUser = (from user in _context.User where user.UserName == User.Identity.Name select user).ToList()[0];
                 _context.Add(newProperty);
@@ -148,7 +147,7 @@ namespace DemoMVC.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,ProvinceName,DistrictName,CommuneName,ThumbnailUrl,PropertyCodeType,TotalArea,TotalPrice")] PropertyViewModel @property, IFormFile? file)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,ProvinceName,DistrictName,CommuneName,ThumbnailUrl,PropertyCodeType,TotalArea,TotalPrice,TransactionTypeCode")] PropertyViewModel @property, IFormFile? file)
         {
             Property old = _context.Property.Include(p => p.PropertyCodeType).Include(p => p.CreateByUser).Where(p => p.Id == id).FirstOrDefault();
             if (old == null && id != @property.Id)
@@ -177,8 +176,9 @@ namespace DemoMVC.Controllers
                     old.ProvinceName = property.ProvinceName;
                     old.DistrictName = property.DistrictName;
                     old.CommuneName = property.CommuneName;
+                    old.TransactionTypeCode = property.TransactionTypeCode;
                     old.TotalArea = property.TotalArea;
-                    old.TotalPrice = property.TotalPrice;
+                    old.TotalPrice = decimal.Parse(property.TotalPrice.Replace(".",""));
                     old.PropertyCodeType = _context.CodeTypes.Find(Guid.Parse(@property.PropertyCodeType));
                     await _context.SaveChangesAsync();
                 }
@@ -195,7 +195,7 @@ namespace DemoMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(@property);
+                return View(@property);
         }
 
         [Authorize]

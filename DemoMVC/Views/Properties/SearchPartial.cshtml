@@ -4,7 +4,10 @@
 }
 <input hidden id="totalPage" value="@Model.TotalPage"/>
 <input hidden id="pageIndex" value="@Model.PageIndex" />
-<input hidden id="partial-range" value="@((Model.PageIndex - 1) * Model.PageSize + 1)- @(des > Model.Total? Model.Total : des)" />
+<input hidden id="partial-range" value="@((Model.PageIndex - 1) * Model.PageSize + 1)-@(des > Model.Total? Model.Total : des)" />
+<input hidden id="hasPrev" value="@(!Model.HasPreviousPage ? " cursor-not-allowed" : "" )" />
+<input hidden id="hasNext" value="@(!Model.HasNextPage ? " cursor-not-allowed" : "" )" />
+
 
 @if(Model != null)
 {
@@ -12,13 +15,20 @@
     {
         <tr class="bg-white border-b hover:bg-rose-50">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                @item.Title
+                <span class="block overflow-hidden text-ellipsis w-[150px]">@item.Title </span>
             </th>
             <td class="px-6 py-4">
                 @item.TotalArea
             </td>
             <td class="px-6 py-4">
-                @item.TotalPrice
+                @if (item.TotalPrice >= (decimal)1e9)
+                {
+                    <span> @(Math.Round(item.TotalPrice / (decimal)1e9, 2)) tỷ VNĐ</span>
+                }
+                else
+                {
+                    <span> @(Math.Round(item.TotalPrice / (decimal)1e6, 2)) triệu VNĐ</span>
+                }   
             </td>
             <td class="px-6 py-4">
                 @item.PropertyCodeType.Title
